@@ -20,8 +20,12 @@ assert LINE.strip() == LINE, "line must not start or end with whitespace"
 def main():
     out = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out, exist_ok=True)
-    with open(os.path.join(out, "entry.txt"), "w", encoding="utf-8") as f:
+    path = os.path.join(out, "entry.txt")
+    with open(path, "w", encoding="utf-8") as f:
         f.write(LINE)
+    # Read back and verify: what the grader will read must be exactly LINE.
+    with open(path, encoding="utf-8") as f:
+        assert f.read() == LINE, "entry.txt round-trip mismatch"
 
 
 if __name__ == "__main__":
