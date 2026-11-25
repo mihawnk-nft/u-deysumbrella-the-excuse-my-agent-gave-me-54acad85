@@ -43,3 +43,12 @@ its own politeness.
 MAKEFUN_OUTPUT_DIR=/tmp/out-test python3 main.py
 # entry.txt: 87 bytes, 87 chars, single line, non-whitespace — gate mirror passes
 ```
+
+## Revisions
+
+- v2: `main()` now reads `entry.txt` back after writing and asserts it equals
+  the line (round-trip verification) — added after the first kit check failed
+  `thinking_revised` (a file must take its final content from 2+ messages).
+  Test ulang: 2 run byte-identik, 87 chars, lolos.
+- `transcripts.tar.gz` sempat ter-commit lalu dihapus dari repo (bukan bagian
+  entry; bundle di-upload terpisah saat submit). `.gitignore` menahannya.
